@@ -52,7 +52,7 @@ function run() {
   const command = core.getInput('command', {required: true})
   const timeout = parseFloat(core.getInput('timeout') || 10) * 60000 // Convert to minutes
   const maxScore = parseInt(core.getInput('max-score') || 0)
-  const workingDirectory = core.getInput('working-directory')
+  const workingDirectory = core.getInput('working-directory') || '.'
 
   const processEnv = {
     ...process.env,
@@ -66,11 +66,11 @@ function run() {
 
   try {
     if (setupCommand) {
-      execSync(setupCommand, {timeout, env: processEnv, stdio: 'inherit'})
+      execSync(setupCommand, {timeout, cwd: workingDirectory, env: processEnv, stdio: 'inherit'})
     }
 
     startTime = new Date()
-    output = execSync(command, { timeout, env: processEnv, stdio: 'inherit'})?.toString()
+    output = execSync(command, {timeout, cwd: workingDirectory, env: processEnv, stdio: 'inherit'})?.toString()
     endTime = new Date()
 
     result = generateResult('pass', testName, command, output, endTime - startTime, maxScore)
