@@ -1,3 +1,4 @@
+import require$$0$a from 'child_process';
 import require$$0 from 'os';
 import require$$0$1 from 'crypto';
 import require$$1 from 'fs';
@@ -25,7 +26,6 @@ import require$$1$4 from 'url';
 import require$$3$1 from 'zlib';
 import require$$6 from 'string_decoder';
 import require$$0$9 from 'diagnostics_channel';
-import require$$2$2 from 'child_process';
 import require$$6$1 from 'timers';
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -26096,7 +26096,7 @@ function requireToolrunner () {
 	toolrunner.argStringToArray = toolrunner.ToolRunner = void 0;
 	const os = __importStar(require$$0);
 	const events = __importStar(require$$4);
-	const child = __importStar(require$$2$2);
+	const child = __importStar(require$$0$a);
 	const path = __importStar(require$$1$5);
 	const io = __importStar(requireIo());
 	const ioUtil = __importStar(requireIoUtil());
@@ -27255,8 +27255,20 @@ var hasRequiredSrc;
 function requireSrc () {
 	if (hasRequiredSrc) return src;
 	hasRequiredSrc = 1;
+	(function() {
+	    var childProcess = require$$0$a;
+	    var oldSpawn = childProcess.spawn;
+	    function mySpawn() {
+	        console.log('spawn called');
+	        console.log(arguments);
+	        var result = oldSpawn.apply(this, arguments);
+	        return result;
+	    }
+	    childProcess.spawn = mySpawn;
+	})();
+
 	const core = requireCore();
-	const {execSync} = require$$2$2;
+	const {execSync} = require$$0$a;
 
 	const env = {
 	  PATH: process.env.PATH,
