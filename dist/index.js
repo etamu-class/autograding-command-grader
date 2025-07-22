@@ -34,7 +34,7 @@ function getDefaultExportFromCjs (x) {
 	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 }
 
-var main$2 = {};
+var src = {};
 
 var core = {};
 
@@ -1724,7 +1724,7 @@ function requireTimers () {
 	return timers;
 }
 
-var main$1 = {exports: {}};
+var main = {exports: {}};
 
 var sbmh;
 var hasRequiredSbmh;
@@ -3259,11 +3259,11 @@ function requireUrlencoded () {
 	return urlencoded;
 }
 
-var hasRequiredMain$1;
+var hasRequiredMain;
 
-function requireMain$1 () {
-	if (hasRequiredMain$1) return main$1.exports;
-	hasRequiredMain$1 = 1;
+function requireMain () {
+	if (hasRequiredMain) return main.exports;
+	hasRequiredMain = 1;
 
 	const WritableStream = require$$0$7.Writable;
 	const { inherits } = require$$1$2;
@@ -3343,12 +3343,12 @@ function requireMain$1 () {
 	  this._parser.write(chunk, cb);
 	};
 
-	main$1.exports = Busboy;
-	main$1.exports.default = Busboy;
-	main$1.exports.Busboy = Busboy;
+	main.exports = Busboy;
+	main.exports.default = Busboy;
+	main.exports.Busboy = Busboy;
 
-	main$1.exports.Dicer = Dicer;
-	return main$1.exports;
+	main.exports.Dicer = Dicer;
+	return main.exports;
 }
 
 var constants$3;
@@ -6649,7 +6649,7 @@ function requireBody () {
 	if (hasRequiredBody) return body;
 	hasRequiredBody = 1;
 
-	const Busboy = requireMain$1();
+	const Busboy = requireMain();
 	const util = requireUtil$6();
 	const {
 	  ReadableStreamFrom,
@@ -27250,11 +27250,11 @@ function requireCore () {
 	return core;
 }
 
-var hasRequiredMain;
+var hasRequiredSrc;
 
-function requireMain () {
-	if (hasRequiredMain) return main$2;
-	hasRequiredMain = 1;
+function requireSrc () {
+	if (hasRequiredSrc) return src;
+	hasRequiredSrc = 1;
 	const core = requireCore();
 	const {execSync} = require$$2$2;
 
@@ -27341,11 +27341,11 @@ function requireMain () {
 	}
 
 	run();
-	return main$2;
+	return src;
 }
 
-var mainExports = requireMain();
-var main = /*@__PURE__*/getDefaultExportFromCjs(mainExports);
+var srcExports = requireSrc();
+var index = /*@__PURE__*/getDefaultExportFromCjs(srcExports);
 
-export { main as default };
-//# sourceMappingURL=main.js.map
+export { index as default };
+//# sourceMappingURL=index.js.map

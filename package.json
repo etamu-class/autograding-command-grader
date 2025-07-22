@@ -1,14 +1,14 @@
 {
   "name": "autograding-command-grader",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "### Overview **GitHub Classroom Command Grader** is a plugin for GitHub Classroom's Autograder. Seamlessly integrate your CS class with GitHub using this action to facilitate the grading process.",
   "dependencies": {
     "@actions/core": "^1.11.1",
     "@actions/github": "^6.0.1"
@@ -18,5 +18,13 @@
     "@rollup/plugin-node-resolve": "^16.0.1",
     "rollup": "^4.45.1"
   },
-  "type": "module"
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/etamu-class/autograding-command-grader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/etamu-class/autograding-command-grader/issues"
+  },
+  "homepage": "https://github.com/etamu-class/autograding-command-grader#readme"
 }
