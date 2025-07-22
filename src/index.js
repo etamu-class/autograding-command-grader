@@ -1,15 +1,3 @@
-(function() {
-    var childProcess = require("child_process");
-    var oldSpawn = childProcess.spawn;
-    function mySpawn() {
-        console.log('spawn called');
-        console.log(arguments);
-        var result = oldSpawn.apply(this, arguments);
-        return result;
-    }
-    childProcess.spawn = mySpawn;
-})();
-
 const core = require('@actions/core')
 const {execSync} = require('child_process')
 
@@ -78,11 +66,11 @@ function run() {
 
   try {
     if (setupCommand) {
-      execSync(setupCommand, {timeout, cwd: workingDirectory, env: processEnv, stdio: 'inherit'})
+      execSync(setupCommand, {timeout, env: processEnv, stdio: 'inherit'})
     }
 
     startTime = new Date()
-    output = execSync(command, { cwd: workingDirectory, timeout, env: processEnv, stdio: 'inherit'})?.toString()
+    output = execSync(command, { timeout, env: processEnv, stdio: 'inherit'})?.toString()
     endTime = new Date()
 
     result = generateResult('pass', testName, command, output, endTime - startTime, maxScore)
