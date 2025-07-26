@@ -43,7 +43,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     - name: Run Autograding Tests
-      uses: etamu-class/autograding-command-grader@v2
+      uses: etamu-class/autograding-command-grader@v10
       env: 
         VARIABLE: value
       with:
